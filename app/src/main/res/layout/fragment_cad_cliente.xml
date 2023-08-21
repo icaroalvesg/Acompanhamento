@@ -22,46 +22,69 @@
                 android:src="@drawable/imgem_inicial" />
 
             <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Serviço"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <Spinner
+                android:id="@+id/spServico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/servicos" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="  Nome do cliente"
+                android:text="CPF Cliente"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <EditText
-                android:id="@+id/etNome"
+                android:id="@+id/etCPF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="  Código do pedido"
+                android:text="Detalhe Serviço"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <EditText
-                android:id="@+id/etCodigo"
+                android:id="@+id/etDetalhe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
-            <TextView
-                android:id="@+id/textView3"
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="  Qual o serviço?"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                android:layout_height="wrap_content" />
 
-            <EditText
-                android:id="@+id/etServiço"
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -71,20 +94,20 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <CalendarView
-                android:id="@+id/caData"
+                android:id="@+id/cvData"
                 style="@android:style/Widget.Material.Light.CalendarView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize" />
 
             <Button
                 android:id="@+id/btSalvar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/titulo_salvar" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize" />
 
 
         </LinearLayout>

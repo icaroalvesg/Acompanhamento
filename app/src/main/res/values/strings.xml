@@ -5,6 +5,16 @@
     <string name="title_notifications">Avisos</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="titulo_salvar">Buscar</string>
-    <string name="title_cad_pedido">Buscar pedido</string>
+    <string name="titulo_salvar">Salvar</string>
+    <string name="title_cad_pedido">Pedido</string>
+
+    <string-array name="servicos">
+        <item>Selecione</item>
+        <item>Impressão</item>
+        <item>Adesivos</item>
+        <item>Carimbo</item>
+        <item>Placa</item>
+        <item>Banner</item>
+    </string-array>
+
 </resources>
