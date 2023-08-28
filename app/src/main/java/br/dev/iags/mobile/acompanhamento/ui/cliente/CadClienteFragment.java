@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -62,11 +64,14 @@ public class CadClienteFragment extends Fragment implements View.OnClickListener
                 pedido.setData(dataSelecionada);
 
                 //mensagem de sucesso
-                Context context = view.getContext();
+               /* Context context = view.getContext();
                 CharSequence text = "salvo com sucesso!";
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                toast.show();*/
+                Snackbar.make(view,"Pedido cadastrado com sucesso!"
+                        ,Snackbar.LENGTH_LONG).show();
+
                 break;
         }
 
