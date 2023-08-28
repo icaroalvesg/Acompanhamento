@@ -62,15 +62,14 @@ public class CadClienteFragment extends Fragment implements View.OnClickListener
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 String dataSelecionada = sdf.format(new Date(cvData.getDate()));
                 pedido.setData(dataSelecionada);
-
                 //mensagem de sucesso
                /* Context context = view.getContext();
                 CharSequence text = "salvo com sucesso!";
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();*/
-                Snackbar.make(view,"Pedido cadastrado com sucesso!"
-                        ,Snackbar.LENGTH_LONG).show();
+                Snackbar.make(view,"Pedido cadastrado com sucesso!",Snackbar.LENGTH_LONG).show();
+
 
                 break;
         }
