@@ -79,7 +79,7 @@ public class CadClienteFragment extends Fragment implements View.OnClickListener
                 pedido.setCodServico(this.spServico.getSelectedItemPosition());
                 pedido.setCpfCliente(this.etCPF.getText().toString());
                 pedido.setDetalheServico(this.etDetalhe.getText().toString());
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String dataSelecionada = sdf.format(new Date(cvData.getDate()));
                 pedido.setData(dataSelecionada);
                 //mensagem de sucesso
@@ -94,7 +94,7 @@ public class CadClienteFragment extends Fragment implements View.OnClickListener
                 //chamar webservice
                 jsonObjectReq = new JsonObjectRequest(
                         Request.Method.POST,
-                        "http://10.0.2.2/cadPedido.php/segServer/rest/usuario",
+                        "http://10.0.2.2/cadPedido.php",
                         pedido.toJsonObject(), this, this);
                 requestQueue.add(jsonObjectReq);
                 break;
@@ -116,11 +116,11 @@ public class CadClienteFragment extends Fragment implements View.OnClickListener
             //cvontext e text sao para a mensagem na tela o toast
             Context context = view.getContext();
             //pegando mesagem que veio no json
-            CharSequence mensagem = jo.getString("mensage");
+            CharSequence mensagem = jo.getString("message");
             //duração da mensgem na tela
             int duration = Toast.LENGTH_SHORT;
             //verificando se salvou sem erro para limpar campos da tela
-            if(jo.getBoolean("sucess")){
+            if(jo.getBoolean("success")){
                 //campos texto
                 this.etCPF.setText("");
                 this.etDetalhe.setText("");

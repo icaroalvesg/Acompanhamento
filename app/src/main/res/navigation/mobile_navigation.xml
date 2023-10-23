@@ -27,4 +27,9 @@
         android:name="br.dev.iags.mobile.acompanhamento.ui.cliente.CadClienteFragment"
         android:label="@string/title_cad_pedido"
         tools:layout="@layout/fragment_cad_cliente" />
+    <fragment
+        android:id="@+id/navigation_con_pedido"
+        android:name="br.dev.iags.mobile.acompanhamento.ui.cliente.ConpedidoFragment"
+        android:label="@string/title_con_pedido"
+        tools:layout="@layout/fragment_conpedido_list" />
 </navigation>

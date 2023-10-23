@@ -7,6 +7,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="titulo_salvar">Salvar</string>
     <string name="title_cad_pedido">Pedido</string>
+    <string name="title_con_pedido">con.pedido</string>
 
     <string-array name="servicos">
         <item>Selecione</item>

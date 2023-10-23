@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Pedido {
+    public int id;
     //atributos
     private int idPedido;
     private String cpfCliente;
@@ -18,14 +19,14 @@ public class Pedido {
             Integer numero = (int) jp.get("id");
             this.setIdPedido(numero);
             //nome
-            this.setCpfCliente((String) jp.get("cliente"));
+            this.setCpfCliente((String) jp.get("nrcpfcliente"));
             //codigo
-            numero = (int) jp.get("servico");
+            numero = (int) jp.get("idservico");
             this.setCodServico(numero);
             //servico
-            this.setDetalheServico((String) jp.get("detalhe"));
+            this.setDetalheServico((String) jp.get("deinfservico"));
             //data
-            this.setData((String) jp.get("data"));
+            this.setData((String) jp.get("dtservico"));
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -43,11 +44,11 @@ public class Pedido {
     public JSONObject toJsonObject() {
         JSONObject json = new JSONObject();
         try {
-            json.put("id", this.idPedido);
-            json.put("cliente", this.cpfCliente);
-            json.put("servico", this.codServico);
-            json.put("detalhe", this.detalheServico);
-            json.put("data", this.data);
+            //json.put("idservico", this.idPedido);
+            json.put("nrcpfcliente", this.cpfCliente);
+            json.put("idservico", this.codServico);
+            json.put("deinfservico", this.detalheServico);
+            json.put("dtservico", this.data);
         } catch (JSONException e) {
             e.printStackTrace();
         }
