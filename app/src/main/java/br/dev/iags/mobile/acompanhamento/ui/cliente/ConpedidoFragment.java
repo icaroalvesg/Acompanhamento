@@ -12,11 +12,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.snackbar.Snackbar;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -76,17 +82,22 @@ public class ConpedidoFragment extends Fragment implements Response.ErrorListene
         //inicializando a fila de requests do SO
         this.requestQueue.start();
 
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new ConPedidoRecyclerViewAdapter(pedidos));
-        }
+        //array parametro de envio para o serviço
+        JSONArray jsonArray = new JSONArray();
+        //objeto com informações de filtro da consulta
+        Pedido pedido = new Pedido();
+        //pedido.setidPedido("1");
+        pedido.setCpfCliente("04641249563");
+        //pedido.setEmail("");
+        //incluindo objeto no array de envio
+        jsonArray.put(pedido.toJsonObject());
+        //requisição para o Rest Server
+        jsonArrayReq = new JsonArrayRequest(Request.Method.GET,
+                "http://10.0.2.2/conPedido.php",
+                null, this, this);
+        //mando executar a requisção na fila do sistema
+        requestQueue.add(jsonArrayReq);
+
         return view;
     }
 
@@ -97,6 +108,44 @@ public class ConpedidoFragment extends Fragment implements Response.ErrorListene
 
     @Override
     public void onResponse(Object response) {
+        try {
+            //array Json para receber a resposta do webservice
+            JSONArray jsonArray = null;
+            jsonArray = new JSONArray(response.toString());
+            //se a consulta não veio vazia passar para array list
+            if (jsonArray != null) {
+                //objeto java
+                Pedido pedido = null;
+                //array list para receber a resposta
+                this.pedidos = new ArrayList<Pedido>();
+                //preenchendo ArrayList com JSONArray recebido
+                for (int i = 0, size = jsonArray.length();
+                     i < size; i++) {
+                    JSONObject jo = jsonArray.getJSONObject(i);
+                    pedido = new Pedido(jo);
+                    this.pedidos.add(pedido);
+                }
+
+                // Set the adapter
+                if (view instanceof RecyclerView) {
+                    Context context = view.getContext();
+                    RecyclerView recyclerView = (RecyclerView) view;
+                    if (mColumnCount <= 1) {
+                        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                    } else {
+                        recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+                    }
+                    recyclerView.setAdapter(new ConPedidoRecyclerViewAdapter(pedidos));
+                }
+            }else {
+                Snackbar mensagem = Snackbar.make(view,
+                        "A consulta não retornou nenhum registro!",
+                        Snackbar.LENGTH_LONG);
+                mensagem.show();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 }
