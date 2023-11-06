@@ -16,7 +16,7 @@ public class Pedido {
     public Pedido(JSONObject jp) {
         try {
             //id
-            Integer numero = (int) jp.getInt("idpedido");
+            int numero = (int) jp.getInt("idPedido");
             this.setIdPedido(numero);
             //codigo spiner
             numero = (int) jp.getInt("idservico");

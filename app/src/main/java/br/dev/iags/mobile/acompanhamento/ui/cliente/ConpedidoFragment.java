@@ -96,7 +96,7 @@ public class ConpedidoFragment extends Fragment implements Response.ErrorListene
         jsonArray.put(pedido.toJsonObject());
         //requisição para o Rest Server
         jsonArrayReq = new JsonArrayRequest(Request.Method.POST,
-                "http://10.0.2.2/conPedido.php",
+                "http://10.0.2.2/cpedido.php",
                 jsonArray, this, this);
 
         //null, this, this);
