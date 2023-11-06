@@ -86,23 +86,34 @@ public class ConpedidoFragment extends Fragment implements Response.ErrorListene
         JSONArray jsonArray = new JSONArray();
         //objeto com informações de filtro da consulta
         Pedido pedido = new Pedido();
+        pedido.setIdServico(2);
+
+        //pedido.setDtservico("");
+        //pedido.setDeInfoServico("");
         //pedido.setidPedido("1");
-        pedido.setCpfCliente("04641249563");
         //pedido.setEmail("");
         //incluindo objeto no array de envio
         jsonArray.put(pedido.toJsonObject());
         //requisição para o Rest Server
-        jsonArrayReq = new JsonArrayRequest(Request.Method.GET,
+        jsonArrayReq = new JsonArrayRequest(Request.Method.POST,
                 "http://10.0.2.2/conPedido.php",
-                null, this, this);
+                jsonArray, this, this);
+
+        //null, this, this);
         //mando executar a requisção na fila do sistema
         requestQueue.add(jsonArrayReq);
 
-        return view;
+        return this.view;
+
     }
 
     @Override
     public void onErrorResponse(VolleyError error) {
+        //mostrar mensagem que veio do servidor
+        Snackbar mensagem = Snackbar.make(view,
+                "Ops! Houve um problema ao realizar a consulta: " +
+                        error.toString(), Snackbar.LENGTH_LONG);
+        mensagem.show();
 
     }
 

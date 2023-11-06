@@ -35,7 +35,7 @@ public class ConPedidoRecyclerViewAdapter extends RecyclerView.Adapter<ConPedido
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(String.valueOf(mValues.get(position).getIdPedido()));
-        holder.mContentView.setText(String.valueOf(mValues.get(position).getCpfCliente()));
+        holder.mContentView.setText(String.valueOf(mValues.get(position).getNrcpfcliente()));
     }
 
     @Override

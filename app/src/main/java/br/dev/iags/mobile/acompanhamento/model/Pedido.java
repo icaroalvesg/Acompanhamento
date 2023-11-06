@@ -7,26 +7,26 @@ public class Pedido {
     public int id;
     //atributos
     private int idPedido;
-    private String cpfCliente;
-    private String detalheServico;
-    private int codServico;
-    private String data;
+    private String nrcpfcliente;
+    private String deInfoServico;
+    private int idServico;
+    private String dtservico;
 
     //CONSTRUTOR - inicializa atributos de um arquivo JSon
     public Pedido(JSONObject jp) {
         try {
             //id
-            Integer numero = (int) jp.get("id");
+            Integer numero = (int) jp.getInt("idpedido");
             this.setIdPedido(numero);
+            //codigo spiner
+            numero = (int) jp.getInt("idservico");
+            this.setIdServico(numero);
             //nome
-            this.setCpfCliente((String) jp.get("nrcpfcliente"));
-            //codigo
-            numero = (int) jp.get("idservico");
-            this.setCodServico(numero);
+            this.setNrcpfcliente((String) jp.getString("nrcpfcliente"));
             //servico
-            this.setDetalheServico((String) jp.get("deinfservico"));
+            this.setDeInfoServico((String) jp.getString("deinfservico"));
             //data
-            this.setData((String) jp.get("dtservico"));
+            this.setDtservico((String) jp.getString("dtservico"));
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -35,20 +35,20 @@ public class Pedido {
     //CONSTRUTOR - Inicializa os atributos para gerar Objeto Json
     public Pedido() {
         this.setIdPedido(0);
-        this.setCpfCliente("");
-        this.setCodServico(0);
-        this.setDetalheServico("");
-        this.setData("");
+        this.setNrcpfcliente("");
+        this.setIdServico(0);
+        this.setDeInfoServico("");
+        this.setDtservico("");
     }
     //Metodo retorna o objeto com dados no formato JSON
     public JSONObject toJsonObject() {
         JSONObject json = new JSONObject();
         try {
             //json.put("idservico", this.idPedido);
-            json.put("nrcpfcliente", this.cpfCliente);
-            json.put("idservico", this.codServico);
-            json.put("deinfservico", this.detalheServico);
-            json.put("dtservico", this.data);
+            json.put("nrcpfcliente", this.nrcpfcliente);
+            json.put("idservico", this.idServico);
+            json.put("deinfservico", this.deInfoServico);
+            json.put("dtservico", this.dtservico);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -66,36 +66,36 @@ public class Pedido {
         this.idPedido = idPedido;
     }
 
-    public String getCpfCliente() {
-        return cpfCliente;
+    public String getNrcpfcliente() {
+        return nrcpfcliente;
     }
 
-    public void setCpfCliente(String cpfCliente) {
-        this.cpfCliente = cpfCliente;
+    public void setNrcpfcliente(String nrcpfcliente) {
+        this.nrcpfcliente = nrcpfcliente;
     }
 
-    public String getDetalheServico() {
-        return detalheServico;
+    public String getDeInfoServico() {
+        return deInfoServico;
     }
 
-    public void setDetalheServico(String detalheServico) {
-        this.detalheServico = detalheServico;
+    public void setDeInfoServico(String deInfoServico) {
+        this.deInfoServico = deInfoServico;
     }
 
-    public int getCodServico() {
-        return codServico;
+    public int getIdServico() {
+        return idServico;
     }
 
-    public void setCodServico(int codServico) {
-        this.codServico = codServico;
+    public void setIdServico(int idServico) {
+        this.idServico = idServico;
     }
 
-    public String getData() {
-        return data;
+    public String getDtservico() {
+        return dtservico;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDtservico(String dtservico) {
+        this.dtservico = dtservico;
     }
 
 

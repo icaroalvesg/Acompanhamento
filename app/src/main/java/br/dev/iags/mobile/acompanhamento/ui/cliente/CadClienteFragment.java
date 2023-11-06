@@ -3,8 +3,6 @@ package br.dev.iags.mobile.acompanhamento.ui.cliente;
 import android.content.Context;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -76,12 +74,12 @@ public class CadClienteFragment extends Fragment implements View.OnClickListener
 
             case R.id.btSalvar:
                 Pedido pedido = new Pedido();
-                pedido.setCodServico(this.spServico.getSelectedItemPosition());
-                pedido.setCpfCliente(this.etCPF.getText().toString());
-                pedido.setDetalheServico(this.etDetalhe.getText().toString());
+                pedido.setIdServico(this.spServico.getSelectedItemPosition());
+                pedido.setNrcpfcliente(this.etCPF.getText().toString());
+                pedido.setDeInfoServico(this.etDetalhe.getText().toString());
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String dataSelecionada = sdf.format(new Date(cvData.getDate()));
-                pedido.setData(dataSelecionada);
+                pedido.setDtservico(dataSelecionada);
                 //mensagem de sucesso
                /* Context context = view.getContext();
                 CharSequence text = "salvo com sucesso!";
